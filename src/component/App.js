@@ -1,6 +1,7 @@
 import React from 'react';
 import VisibleTodoList from '../container/VisibleTodoList';
 import FilterButtons from '../container/FilterButtons';
+import AddTodo from '../container/AddTodo';
 
 
 class App extends React.Component {
@@ -12,6 +13,8 @@ class App extends React.Component {
       <div>
         <VisibleTodoList />
         <FilterButtons />
+        <AddTodo />
+
 
       </div>
     );
