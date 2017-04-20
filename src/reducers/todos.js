@@ -4,7 +4,6 @@ function todos(state = [], action) {
   switch (action.type) {
     case 'TOGGLE_TODO':
       const toBeReturned = state.map((todo, index)=>{
-        console.log(state);
         if (index === action.index){
           return Object.assign({},todo,{completed: !todo.completed});
         }
@@ -20,6 +19,7 @@ function todos(state = [], action) {
         return o.id;
       });
       var maxId = Math.max.apply(Math, tmp);
+      maxId = maxId < 0 ? 0 : maxId;
 
       return [
         ...state,
