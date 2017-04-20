@@ -1,9 +1,15 @@
+
+
 function todos(state = [], action) {
   switch (action.type) {
     case 'TOGGLE_TODO':
-      const i = action.index;
-      const toBeReturned = [...state];
-      toBeReturned[i].completed = !toBeReturned[i].completed;
+      const toBeReturned = state.map((todo, index)=>{
+        console.log(state);
+        if (index === action.index){
+          return Object.assign({},todo,{completed: !todo.completed});
+        }
+        return todo;
+      });
       return toBeReturned;
       break;
     case 'REMOVE_TODO':
