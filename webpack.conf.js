@@ -9,9 +9,10 @@ const config = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+  devtool: 'source-map',
   module: {
     rules : [
-      {test: /\.css$/, use: 'css-loader'},
+      {test: /\.css$/, use: ['style-loader','css-loader']},
       {test: /\.(js|jsx)$/, use: 'babel-loader'},
       {test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=/public/[name].[ext]"}
     ]

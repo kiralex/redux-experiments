@@ -1,25 +1,41 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import Trash from '../../public/garbage.png';
 
-const Todo = props => (
-  <li>
-    <span
-      onClick={props.toggleTodo.bind(null, props.index)}
-      style={{
-        textDecoration: props.todo.completed ? 'line-through' : 'none',
-      }}
-    >
-      {props.todo.text}
-    </span>
-    <img
-      src={Trash}
-      alt="delete"
-      onClick={props.removeTodo.bind(null, props.index)}
-    />
-  </li>
-);
+
+class Todo extends Component{
+    constructor(props){
+      super(props);
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+      //props.todo connect to state through TodoListContainer
+      const ShouldUpdate = (this.props.todo !== nextProps.todo);
+      return ShouldUpdate;
+    }
+
+    render(){
+      console.log(`==> Rendering ${this.props.todo.text}...`);
+      return(
+        <li>
+          <span
+            onClick={this.props.toggleTodo.bind(null, this.props.index)}
+            style={{
+              textDecoration: this.props.todo.completed ? 'line-through' : 'none',
+            }}
+          >
+            {this.props.todo.text}
+          </span>
+          <img
+            src={Trash}
+            alt="delete"
+            onClick={this.props.removeTodo.bind(null, this.props.index)}
+          />
+        </li>
+      )
+    }
+}
 
 Todo.propTypes = {
   todo: PropTypes.shape({
