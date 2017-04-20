@@ -21,6 +21,7 @@
     "babel-preset-es2017": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.0",
+    "file-loader": "^0.11.1",
     "html-webpack-plugin": "^2.28.0",
     "react-redux": "^5.0.4",
     "react-router-redux": "^4.0.8",
@@ -29,7 +30,7 @@
   },
   "scripts": {
     "start": "webpack-dev-server --config='webpack.conf.js' --progress --hot --open",
-    "build": "webpack",
+    "build": "webpack --config='webpack.conf.js'",
     "test": "jest --watch"
   }
 }

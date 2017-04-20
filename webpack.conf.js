@@ -6,12 +6,13 @@ const config = {
   entry: path.resolve(__dirname, 'src/index.js'),
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules : [
       {test: /\.css$/, use: 'css-loader'},
-      {test: /\.(js|jsx)$/, use: 'babel-loader'}
+      {test: /\.(js|jsx)$/, use: 'babel-loader'},
+      {test: /\.(jpe?g|png|gif|svg)$/i, loader: "file-loader?name=/public/[name].[ext]"}
     ]
   },
   plugins: [

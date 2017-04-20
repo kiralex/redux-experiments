@@ -6,10 +6,11 @@ const TodoList = props => (
   <ul>
     {props.todos.map( (todo, i) => (
       <Todo
-        {...todo}
-        {...props}
+        todo={{...todo}}
+        toggleTodo={props.toggleTodo}
+        removeTodo={props.removeTodo}
         index={i}
-        key={todo.id} // Copy all props of todo element (text, id)
+        key={todo.id}
       />
     ))}
   </ul>
@@ -23,6 +24,7 @@ TodoList.propTypes = {
       text: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
+  toggleTodo: PropTypes.func.isRequired,
 };
 
 export default TodoList;
