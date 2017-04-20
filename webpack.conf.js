@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const prod = process.argv.indexOf('-p') !== -1;
 
 const config = {
   entry: path.resolve(__dirname, 'src/index.js'),
@@ -24,5 +25,26 @@ const config = {
     port: 9000
   }
 };
+
+/*
+This code was seperated from the config for multiple reasons.
+Other conditional things can be added very simply.
+Also, the check for config.plugins is so it is not dependent on the structure above.
+*/
+
+config.plugins = config.plugins||[];
+if (prod) {
+  config.plugins.push(new webpack.DefinePlugin({
+      'process.env': {
+          'NODE_ENV': `"production"`
+      }
+  }));
+} else {
+  config.plugins.push(new webpack.DefinePlugin({
+      'process.env': {
+          'NODE_ENV': `""`
+      }
+  }));
+}
 
 module.exports = config;

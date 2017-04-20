@@ -1,6 +1,6 @@
-import { createStore } from 'redux';
-
+import {applyMiddleware, createStore } from 'redux';
 import rootReducer from './reducers/index';
+import StateInvarient from 'redux-immutable-state-invariant';
 
 const defaultState = {
   todos: [
@@ -13,5 +13,10 @@ const defaultState = {
   ],
   filters: 'rien...'
 };
-const store = createStore(rootReducer, defaultState);
+
+const middleware = process.env.NODE_ENV !== 'production' ?
+  [StateInvarient()] :
+  [];
+
+const store = createStore(rootReducer, defaultState, applyMiddleware(...middleware));
 export default store;
