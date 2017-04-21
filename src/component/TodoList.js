@@ -5,7 +5,6 @@ import Todo from './Todo';
 const TodoList = props => (
   <ul>
     {props.todos.map( (todo, i) => (
-      <div className='border'>
       <Todo
         todo={todo}
         toggleTodo={props.toggleTodo}
@@ -13,7 +12,6 @@ const TodoList = props => (
         index={i}
         key={todo.id}
       />
-      </div>
     ))}
   </ul>
 );
