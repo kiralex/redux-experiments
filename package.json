@@ -32,7 +32,7 @@
     "webpack-dev-server": "^2.4.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --config='webpack.conf.js' --progress --hot --open",
+    "start": "webpack-dev-server --config='webpack.conf.js' --progress --hot",
     "build": "webpack --config='webpack.conf.js'",
     "test": "jest"
   }

@@ -1,4 +1,4 @@
-function filters(state = [], action) {
+function filters(state = 'SHOW_ALL', action) {
   switch (action.type) {
     case 'SHOW_ALL':
       return action.type;
