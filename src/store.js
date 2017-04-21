@@ -1,4 +1,4 @@
-import {applyMiddleware, createStore } from 'redux';
+import {applyMiddleware, createStore, compose } from 'redux';
 import rootReducer from './reducers/index';
 import StateInvarient from 'redux-immutable-state-invariant';
 
@@ -18,6 +18,12 @@ const middleware = process.env.NODE_ENV !== 'production' ?
   [StateInvarient()] :
   [];
 
+const ehancers = compose(
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+);
+
+const store = createStore(rootReducer, defaultState, ehancers, applyMiddleware(...middleware));
+
 //Add hot realoding reducers
 if(module.hot){
   module.hot.accept('./reducers', () => {
@@ -26,6 +32,4 @@ if(module.hot){
   })
 }
 
-
-const store = createStore(rootReducer, defaultState, applyMiddleware(...middleware));
 export default store;
