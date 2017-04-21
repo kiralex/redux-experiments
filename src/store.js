@@ -18,14 +18,5 @@ const middleware = process.env.NODE_ENV !== 'production' ?
   [StateInvarient()] :
   [];
 
-//Add hot realoding reducers
-if(module.hot){
-  module.hot.accept('./reducers', () => {
-    const nextRootReducer = require('./reducers/index').default;
-    store.replaceReducer(nextRootReducer);
-  })
-}
-
-
 const store = createStore(rootReducer, defaultState, applyMiddleware(...middleware));
 export default store;
