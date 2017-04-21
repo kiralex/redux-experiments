@@ -5,13 +5,15 @@ import Todo from './Todo';
 const TodoList = props => (
   <ul>
     {props.todos.map( (todo, i) => (
+      <div className='border'>
       <Todo
-        todo={{...todo}}
+        todo={todo}
         toggleTodo={props.toggleTodo}
         removeTodo={props.removeTodo}
         index={i}
         key={todo.id}
       />
+      </div>
     ))}
   </ul>
 );
